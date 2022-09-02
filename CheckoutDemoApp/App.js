@@ -1,13 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import type {Node} from 'react';
-import React, {useState} from 'react';
+import {Node, useState} from 'react';
+import React from 'react';
 import {Button, NativeModules} from 'react-native';
 
 const VGSChechoutCustomFlowManager = NativeModules.CheckoutCustomFlowManager;
@@ -22,20 +14,25 @@ import {
   View,
 } from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  const [checkoutResult, setCheckoutResult] = useState('...');
+
   return (
     <View style={styles.sectionContainer}>
       <Button
         title="Start Checkout Custom Flow"
         onPress={() =>
-          VGSChechoutCustomFlowManager.checkoutButtonDidTap(value => {
-            console.log(value);
+          VGSChechoutCustomFlowManager.presentCheckout(result => {
+            /// handle checkout result
+            setCheckoutResult(JSON.stringify(result));
           })
         }
       />
+      <Text style={styles.sectionDescription}>{checkoutResult}</Text>
     </View>
   );
 };
@@ -53,7 +50,6 @@ const App: () => Node = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -70,7 +66,7 @@ const App: () => Node = () => {
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
+    marginTop: 100,
     paddingHorizontal: 24,
   },
   sectionTitle: {
@@ -78,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   sectionDescription: {
-    marginTop: 8,
+    marginTop: 50,
     fontSize: 18,
     fontWeight: '400',
   },

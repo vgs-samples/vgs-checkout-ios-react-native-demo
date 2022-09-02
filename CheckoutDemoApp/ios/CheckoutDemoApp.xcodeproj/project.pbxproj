@@ -93,7 +93,6 @@
 		0321A58F28B4ACA4001EBD7D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				0321A59128B4ACC1001EBD7D /* AddCardFlow */,
 				0321A59028B4ACB0001EBD7D /* CustomFlow */,
 			);
 			path = UseCases;
@@ -106,13 +105,6 @@
 				0321A59528B4B6D7001EBD7D /* CheckoutCustomFlowBridge.m */,
 			);
 			name = CustomFlow;
-			sourceTree = "<group>";
-		};
-		0321A59128B4ACC1001EBD7D /* AddCardFlow */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddCardFlow;
 			sourceTree = "<group>";
 		};
 		0334C48A28BF95400074651F /* Helpers */ = {

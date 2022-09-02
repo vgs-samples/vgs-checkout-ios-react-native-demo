@@ -21,7 +21,7 @@ class CheckoutCustomFlowManager: NSObject {
   @objc var resultCallback: RCTResponseSenderBlock?
 
   @objc
-  func checkoutButtonDidTap(_ callback: @escaping RCTResponseSenderBlock) {
+  func presentCheckout(_ callback: @escaping RCTResponseSenderBlock) {
     // Create custom configuration.
     var checkoutConfiguration = VGSCheckoutCustomConfiguration(vaultID: DemoAppConfiguration.vaultId, environment: DemoAppConfiguration.environment)
 

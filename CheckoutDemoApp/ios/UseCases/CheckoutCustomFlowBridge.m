@@ -11,7 +11,6 @@
 
 @interface RCT_EXTERN_MODULE(CheckoutCustomFlowManager, RCTViewManager)
 
-RCT_EXTERN_METHOD(checkoutButtonDidTap: (RCTResponseSenderBlock)callback);
-RCT_EXPORT_VIEW_PROPERTY(onPressLeftButton, RCTDirectEventBlock)
+RCT_EXTERN_METHOD(presentCheckout: (RCTResponseSenderBlock)callback);
 
 @end
