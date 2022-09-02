@@ -25,9 +25,9 @@ class CheckoutCustomFlowManager: NSObject {
     // Create custom configuration.
     var checkoutConfiguration = VGSCheckoutCustomConfiguration(vaultID: DemoAppConfiguration.vaultId, environment: DemoAppConfiguration.environment)
 
-    checkoutConfiguration.cardHolderFieldOptions.fieldNameType = .single("cardHolder_name")
+    checkoutConfiguration.cardHolderFieldOptions.fieldNameType = .single("cardholder_name")
     checkoutConfiguration.cardNumberFieldOptions.fieldName = "card_number"
-    checkoutConfiguration.expirationDateFieldOptions.fieldName = "exp_data"
+    checkoutConfiguration.expirationDateFieldOptions.fieldName = "exp_date"
     checkoutConfiguration.cvcFieldOptions.fieldName = "card_cvc"
 
     checkoutConfiguration.billingAddressVisibility = .visible
@@ -100,11 +100,13 @@ extension CheckoutCustomFlowManager: VGSCheckoutDelegate {
     case .success(let statusCode, let data, let response, _):
       title = "Checkout status: Success!"
       message = "status code is: \(statusCode)"
-
-      let result: [String : AnyHashable] = ["status": "success",
+      var result: [String : AnyHashable] = ["status": "success",
                                             "statusCode": statusCode,
-                                            "response": response,
-                                            "data": data]
+                                            "response": response]
+
+      if let data = data, let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyHashable] {
+        result["data"] = jsonData
+      }                                     
       self.resultCallback?([result])
     case .failure(let statusCode, let data, let response, let error, _):
       title = "Checkout status: Failed!"
