@@ -61,15 +61,11 @@ Replace `private const val VAULT_ID = ""` in `android/app/src/main/java/com/chec
 
 ### Step 5
 
-**iOS**
-
-Run the application and submit the checkout form.
+**iOS**: Run the application and submit the checkout form.
 Then go to the Logs tab on <a href="http://dashboard.verygoodsecurity.com" target="_blank">Dashboard</a>, find request and secure a payload.
 Instruction for this step you can find <a href="https://www.verygoodsecurity.com/docs/getting-started/quick-integration#securing-inbound-connection" target="_blank">here</a>.
 
-**Android**
-
-`npx react-native run-android`
+**Android**: `npx react-native run-android`
 
 ### Useful links
 
