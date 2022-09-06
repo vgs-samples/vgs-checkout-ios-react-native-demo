@@ -44,9 +44,7 @@ Install pods:
 
 #### Step 4
 
-**iOS**
-
-In `vgs-collect-show-ios-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
+**iOS**: In `vgs-collect-show-ios-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
 In the app go to `CheckoutCustomFlowManager.swift` file, find `DemoAppConfiguration` class and `vaultId` attribute there:
 
 `let vaultId = "vaultId"`
@@ -54,9 +52,7 @@ In the app go to `CheckoutCustomFlowManager.swift` file, find `DemoAppConfigurat
 and replace `vaultId` with your organization
 <a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
 
-**Android**
-
-Replace `private const val VAULT_ID = ""` in `android/app/src/main/java/com/checkoutdemoapp/modules/checkout/CheckoutModule.kt`  with your organization
+**Android**: Replace `private const val VAULT_ID = ""` in `android/app/src/main/java/com/checkoutdemoapp/modules/checkout/CheckoutModule.kt`  with your organization
 <a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
 
 ### Step 5
