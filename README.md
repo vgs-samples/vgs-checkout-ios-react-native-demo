@@ -44,7 +44,7 @@ Install pods:
 
 #### Step 4
 
-**iOS**: In `vgs-collect-show-ios-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
+**iOS**: In `vgs-checkout-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
 In the app go to `CheckoutCustomFlowManager.swift` file, find `DemoAppConfiguration` class and `vaultId` attribute there:
 
 `let vaultId = "vaultId"`
