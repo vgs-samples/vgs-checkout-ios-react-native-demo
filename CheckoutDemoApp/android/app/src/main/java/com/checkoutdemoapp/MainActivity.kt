@@ -1,82 +1,60 @@
-package com.checkoutdemoapp;
+package com.checkoutdemoapp
 
-import android.os.Bundle;
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.checkoutdemoapp.modules.checkout.CheckoutPackages
+import com.facebook.react.BuildConfig
+import com.facebook.react.PackageList
+import com.facebook.react.ReactInstanceManager
+import com.facebook.react.ReactRootView
+import com.facebook.react.common.LifecycleState
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
+import com.facebook.soloader.SoLoader
 
-import androidx.appcompat.app.AppCompatActivity;
+class MainActivity : AppCompatActivity(), DefaultHardwareBackBtnHandler {
 
-import com.checkoutdemoapp.modules.checkout.CheckoutPackages;
-import com.facebook.react.BuildConfig;
-import com.facebook.react.PackageList;
-import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactRootView;
-import com.facebook.react.common.LifecycleState;
-import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.facebook.soloader.SoLoader;
+    private lateinit var reactRootView: ReactRootView
+    private lateinit var reactInstanceManager: ReactInstanceManager
 
-public class MainActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
-
-    private ReactRootView reactRootView;
-    private ReactInstanceManager reactInstanceManager;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        SoLoader.init(this, false);
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        SoLoader.init(this, false)
         reactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setCurrentActivity(this)
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModulePath("index")
-                .addPackages(new PackageList(getApplication()).getPackages())
-                .addPackage(new CheckoutPackages(this)) // <-- Important: CheckoutPackages should be created before Activity RESUMED state.
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
-
-        reactRootView = new ReactRootView(this);
-        reactRootView.startReactApplication(reactInstanceManager, "MainActivity", null);
-        setContentView(reactRootView);
+            .setApplication(application)
+            .setCurrentActivity(this)
+            .setBundleAssetName("index.android.bundle")
+            .setJSMainModulePath("index")
+            .addPackages(PackageList(application).packages)
+            .addPackage(CheckoutPackages(this)) // <-- Important: CheckoutPackages should be created before Activity RESUMED state.
+            .setUseDeveloperSupport(BuildConfig.DEBUG)
+            .setInitialLifecycleState(LifecycleState.RESUMED)
+            .build()
+        reactRootView = ReactRootView(this)
+        reactRootView.startReactApplication(reactInstanceManager, "MainActivity", null)
+        setContentView(reactRootView)
     }
 
-    @Override
-    public void invokeDefaultOnBackPressed() {
-        super.onBackPressed();
+    override fun invokeDefaultOnBackPressed() {
+        super.onBackPressed()
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (reactInstanceManager != null) {
-            reactInstanceManager.onHostPause(this);
-        }
+    override fun onPause() {
+        super.onPause()
+        reactInstanceManager.onHostPause(this)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (reactInstanceManager != null) {
-            reactInstanceManager.onHostResume(this, this);
-        }
+    override fun onResume() {
+        super.onResume()
+        reactInstanceManager.onHostResume(this, this)
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (reactInstanceManager != null) {
-            reactInstanceManager.onHostDestroy(this);
-        }
-        if (reactRootView != null) {
-            reactRootView.unmountReactApplication();
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        reactInstanceManager.onHostDestroy(this)
+        reactRootView.unmountReactApplication()
     }
 
-    @Override
-    public void onBackPressed() {
-        if (reactInstanceManager != null) {
-            reactInstanceManager.onBackPressed();
-        } else {
-            super.onBackPressed();
-        }
+    override fun onBackPressed() {
+        reactInstanceManager.onBackPressed()
     }
 }

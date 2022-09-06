@@ -1,37 +1,28 @@
-package com.checkoutdemoapp.modules.checkout;
+package com.checkoutdemoapp.modules.checkout
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.facebook.react.ReactPackage
+import com.facebook.react.bridge.NativeModule
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.uimanager.ReactShadowNode
+import com.facebook.react.uimanager.ViewManager
 
-import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.NativeModule;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
+class CheckoutPackages(activity: AppCompatActivity) : ReactPackage {
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+    private val module: CheckoutModule
 
-public class CheckoutPackages implements ReactPackage {
-
-    private final CheckoutModule module;
-
-    public CheckoutPackages(AppCompatActivity activity) {
-        this.module = new CheckoutModule(activity);
+    init {
+        module = CheckoutModule(activity)
     }
 
-    @NonNull
-    @Override
-    public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactApplicationContext) {
-        List<NativeModule> modules = new ArrayList<>();
-        modules.add(module);
-        return modules;
+    override fun createNativeModules(p0: ReactApplicationContext): MutableList<NativeModule> {
+        val modules: MutableList<NativeModule> = ArrayList()
+        modules.add(module)
+        return modules
     }
 
-    @SuppressWarnings("rawtypes")
-    @NonNull
-    @Override
-    public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactApplicationContext) {
-        return Collections.emptyList();
+    override fun createViewManagers(p0: ReactApplicationContext): MutableList<ViewManager<View, ReactShadowNode<*>>> {
+        return mutableListOf()
     }
 }
