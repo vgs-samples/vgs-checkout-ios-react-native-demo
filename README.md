@@ -7,6 +7,7 @@
 ### Requirements
 
 - Installed latest <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>
+- Installed latest <a href="https://developer.android.com/studio" target="_blank">Android Studio</a>
 - Installed <a href="https://guides.cocoapods.org/using/getting-started.html#installation" target="_blank">CocoaPods</a>
 - Organization with <a href="https://www.verygoodsecurity.com/">VGS</a>
 
@@ -43,6 +44,8 @@ Install pods:
 
 #### Step 4
 
+**iOS**
+
 In `vgs-collect-show-ios-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
 In the app go to `CheckoutCustomFlowManager.swift` file, find `DemoAppConfiguration` class and `vaultId` attribute there:
 
@@ -51,11 +54,22 @@ In the app go to `CheckoutCustomFlowManager.swift` file, find `DemoAppConfigurat
 and replace `vaultId` with your organization
 <a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
 
+**Android**
+
+Replace `VAULT_ID` in `android/app/src/main/java/com/checkoutdemoapp/modules/checkout/CheckoutModule.kt`  with your organization
+<a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
+
 ### Step 5
+
+**iOS**
 
 Run the application and submit the checkout form.
 Then go to the Logs tab on <a href="http://dashboard.verygoodsecurity.com" target="_blank">Dashboard</a>, find request and secure a payload.
 Instruction for this step you can find <a href="https://www.verygoodsecurity.com/docs/getting-started/quick-integration#securing-inbound-connection" target="_blank">here</a>.
+
+**Android**
+
+`npx react-native run-android`
 
 ### Useful links
 
