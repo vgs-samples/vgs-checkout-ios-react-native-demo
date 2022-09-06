@@ -65,5 +65,5 @@ Instruction for this step you can find <a href="https://www.verygoodsecurity.com
 
 - <a href="https://www.verygoodsecurity.com/docs/payment-optimization/checkout" target="_blank">VGS Checkout SDK Documentation</a>
 - <a href="https://github.com/verygoodsecurity/vgs-checkout-ios/tree/main/VGSCheckoutDemoApp" target="_blank">Checkout Demo App in native iOS</a>
-- <a href="https://github.com/verygoodsecurity/vgs-checkout-android/tree/main/demo" target="_blank">Checkout Demo App in native Фтвкщшв</a>
+- <a href="https://github.com/verygoodsecurity/vgs-checkout-android/tree/main/demo" target="_blank">Checkout Demo App in native Android</a>
 - <a href="https://facebook.github.io/react-native/docs/native-modules-ios#exporting-swift" target="_blank">Exporting Swift into React Native</a>
