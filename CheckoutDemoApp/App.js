@@ -2,8 +2,6 @@ import {Node, useState} from 'react';
 import React from 'react';
 import {Button, NativeModules} from 'react-native';
 
-const VGSChechoutCustomFlowManager = NativeModules.CheckoutCustomFlowManager;
-
 import {
   SafeAreaView,
   ScrollView,
@@ -12,9 +10,12 @@ import {
   Text,
   useColorScheme,
   View,
+  AppRegistry
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+const VGSCheckoutCustomFlowManager = NativeModules.CheckoutCustomFlowManager;
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,7 +27,7 @@ const Section = ({children, title}): Node => {
       <Button
         title="Start Checkout Custom Flow"
         onPress={() =>
-          VGSChechoutCustomFlowManager.presentCheckout(result => {
+          VGSCheckoutCustomFlowManager.presentCheckout(result => {
             /// handle checkout result
             setCheckoutResult(JSON.stringify(result));
           })
@@ -84,3 +85,8 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+AppRegistry.registerComponent(
+    'MainActivity',
+    () => App
+);
