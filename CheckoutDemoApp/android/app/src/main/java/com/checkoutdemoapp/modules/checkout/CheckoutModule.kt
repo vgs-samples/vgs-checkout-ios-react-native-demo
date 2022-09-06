@@ -59,6 +59,7 @@ class CheckoutModule(
                         .setOptionalAddressOptions("billing_address.addressLine2")
                         .setPostalCodeOptions("billing_address.postal_code")
                         .setMergePolicy(VGSCheckoutDataMergePolicy.NESTED_JSON)
+                        .setPath("post")
                         .build()
                 )
             }
