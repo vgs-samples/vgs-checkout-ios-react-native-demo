@@ -9,7 +9,11 @@ import com.facebook.react.bridge.ReactMethod
 import com.verygoodsecurity.vgscheckout.VGSCheckout
 import com.verygoodsecurity.vgscheckout.VGSCheckoutCallback
 import com.verygoodsecurity.vgscheckout.config.VGSCheckoutCustomConfig
+import com.verygoodsecurity.vgscheckout.config.networking.request.core.VGSCheckoutDataMergePolicy
+import com.verygoodsecurity.vgscheckout.config.ui.view.address.VGSCheckoutBillingAddressVisibility
 import com.verygoodsecurity.vgscheckout.model.VGSCheckoutResult
+import com.verygoodsecurity.vgscheckout.model.VGSCheckoutResultBundle.Keys.ADD_CARD_RESPONSE
+import com.verygoodsecurity.vgscheckout.model.response.VGSCheckoutCardResponse
 
 private const val VAULT_ID = ""
 
@@ -42,7 +46,21 @@ class CheckoutModule(
             if (this == null) {
                 Log.d("Checkout", "VGSCheckout is null")
             } else {
-                present(VGSCheckoutCustomConfig.Builder(VAULT_ID).build())
+                present(
+                    VGSCheckoutCustomConfig.Builder(VAULT_ID)
+                        .setCardHolderOptions("cardholder_name")
+                        .setCardNumberOptions("card_number")
+                        .setExpirationDateOptions("exp_date")
+                        .setCVCOptions("card_cvc")
+                        .setBillingAddressVisibility(VGSCheckoutBillingAddressVisibility.VISIBLE)
+                        .setCountryOptions("billing_address.country")
+                        .setCityOptions("billing_address.city")
+                        .setAddressOptions("billing_address.addressLine1")
+                        .setOptionalAddressOptions("billing_address.addressLine2")
+                        .setPostalCodeOptions("billing_address.postal_code")
+                        .setMergePolicy(VGSCheckoutDataMergePolicy.NESTED_JSON)
+                        .build()
+                )
             }
         }
     }
@@ -56,12 +74,16 @@ class CheckoutModule(
     }
 
     private fun handleResult(callback: Callback, result: VGSCheckoutResult) {
-        val response: MutableMap<String, Any> = HashMap()
+        val response: MutableMap<String, Any?> = HashMap()
         response["status"] = when (result) {
             is VGSCheckoutResult.Success -> "success"
             is VGSCheckoutResult.Failed -> "failed"
             is VGSCheckoutResult.Canceled -> "canceled"
         }
+        val cardResult = result.data.getParcelable<VGSCheckoutCardResponse>(ADD_CARD_RESPONSE)
+        response["statusCode"] = cardResult?.code
+        response["data"] = cardResult?.body
+        response["error"] = cardResult?.message
         callback.invoke(response.toString())
     }
 }
