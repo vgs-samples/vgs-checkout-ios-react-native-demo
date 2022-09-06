@@ -56,7 +56,7 @@ and replace `vaultId` with your organization
 
 **Android**
 
-Replace `VAULT_ID` in `android/app/src/main/java/com/checkoutdemoapp/modules/checkout/CheckoutModule.kt`  with your organization
+Replace `private const val VAULT_ID = ""` in `android/app/src/main/java/com/checkoutdemoapp/modules/checkout/CheckoutModule.kt`  with your organization
 <a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
 
 ### Step 5
