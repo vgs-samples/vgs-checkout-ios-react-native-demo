@@ -1,12 +1,13 @@
 ## VGS Collect iOS SDK - React Native Demo
 
-> **_NOTE:_** This demo is just an example of how [VGS Checkout iOS SDK](https://github.com/verygoodsecurity/vgs-checkout-ios) can be integrated into your's RN application. VGS don't provide RN wrapper for Checkout SDK.
+> **_NOTE:_** This demo is just an example of how [VGS Checkout iOS SDK](https://github.com/verygoodsecurity/vgs-checkout-ios) and [VGS Checkout Android SDK](https://github.com/verygoodsecurity/vgs-checkout-android) can be integrated into your's RN application. VGS don't provide RN wrapper for Checkout SDK.
 
 ## How to run it?
 
 ### Requirements
 
 - Installed latest <a href="https://apps.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>
+- Installed latest <a href="https://developer.android.com/studio" target="_blank">Android Studio</a>
 - Installed <a href="https://guides.cocoapods.org/using/getting-started.html#installation" target="_blank">CocoaPods</a>
 - Organization with <a href="https://www.verygoodsecurity.com/">VGS</a>
 
@@ -43,12 +44,15 @@ Install pods:
 
 #### Step 4
 
-In `vgs-collect-show-ios-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
+**iOS**: In `vgs-checkout-react-native-demo` folder find and open `CheckoutDemoApp.xcworkspace` file.
 In the app go to `CheckoutCustomFlowManager.swift` file, find `DemoAppConfiguration` class and `vaultId` attribute there:
 
 `let vaultId = "vaultId"`
 
 and replace `vaultId` with your organization
+<a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
+
+**Android**: Replace `private const val VAULT_ID = ""` in `android/app/src/main/java/com/checkoutdemoapp/modules/checkout/CheckoutModule.kt`  with your organization
 <a href="https://www.verygoodsecurity.com/docs/terminology/nomenclature#vault" target="_blank">vault id</a>.
 
 ### Step 5
@@ -59,6 +63,7 @@ Instruction for this step you can find <a href="https://www.verygoodsecurity.com
 
 ### Useful links
 
-- <a href="https://www.verygoodsecurity.com/docs/payment-optimization/checkout/ios-sdk/send-data-to-your-server-ios" target="_blank">VGS Checkout SDK Documentation</a>
+- <a href="https://www.verygoodsecurity.com/docs/payment-optimization/checkout" target="_blank">VGS Checkout SDK Documentation</a>
 - <a href="https://github.com/verygoodsecurity/vgs-checkout-ios/tree/main/VGSCheckoutDemoApp" target="_blank">Checkout Demo App in native iOS</a>
+- <a href="https://github.com/verygoodsecurity/vgs-checkout-android/tree/main/demo" target="_blank">Checkout Demo App in native Android</a>
 - <a href="https://facebook.github.io/react-native/docs/native-modules-ios#exporting-swift" target="_blank">Exporting Swift into React Native</a>
