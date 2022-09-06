@@ -1,6 +1,6 @@
 ## VGS Collect iOS SDK - React Native Demo
 
-> **_NOTE:_** This demo is just an example of how [VGS Checkout iOS SDK](https://github.com/verygoodsecurity/vgs-checkout-ios) can be integrated into your's RN application. VGS don't provide RN wrapper for Checkout SDK.
+> **_NOTE:_** This demo is just an example of how [VGS Checkout iOS SDK](https://github.com/verygoodsecurity/vgs-checkout-ios) and [VGS Checkout Android SDK](https://github.com/verygoodsecurity/vgs-checkout-android) can be integrated into your's RN application. VGS don't provide RN wrapper for Checkout SDK.
 
 ## How to run it?
 
